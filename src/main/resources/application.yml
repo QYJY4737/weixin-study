@@ -1,0 +1,43 @@
+server:
+  port: 10534
+spring:
+  application:
+    name: weixin-study
+  #redis配置
+  redis:
+    #Redis数据库索引（默认为0）
+    database: 0
+    #Redis服务器地址
+    host: 192.168.10.101
+    #Redis服务器连接端口
+    port: 6379
+    #Redis服务器连接密码（默认为空）
+    password:
+    lettuce:
+      pool:
+        #连接池最大连接数（使用负值表示没有限制）默认8
+        max-active: 9
+        #连接池最大阻塞等待时间，单位毫秒（使用负值表示没有限制）默认-1
+        max-wait: -1ms
+        #连接池中的最大空闲连接 默认8
+        max-idle: 8
+        #连接池中的最小空闲连接
+        min-idle: 0
+    #连接超时时间
+    timeout: 2000ms
+  cache:
+    type: redis
+#微信公众号相关配置
+weixin:
+  #获取access_token,不配置默认client_credential
+  grant-type: client_credential
+  #第三方用户唯一凭证
+  appid: wxbef17ac2f72f3892
+  #第三方用户唯一凭证密钥，即appsecret
+  secret: 54b6c4ce9ace210a3aecc417b8f6c770
+  #  缓存access_token 的key
+  cach-key: swift
+  #自定义token,用来校验微信服务器发来的信息
+  token: swifthealth
+  #微信api地址
+  api-path: https://api.weixin.qq.com
